@@ -1,0 +1,79 @@
+Question 1:
+
+|--------|
+|        |free memory
+|        |
+|--------| base: 0x00fffffc
+|        |
+|        | "prnull stack"
+|        | stack pointer: 0x00ffff0c
+|        | stack limit:  0x00fff000
+|        |
+|--------| base: 0x00ffeff8
+|        |
+|        | "stakc for main" 
+|        | stack pointer: 0x00ffeff8
+|        | stack limit:  0x00ffdffc
+|        |
+|--------| 
+|        | heap
+|        |
+|--------| ebss: 0x00029c78
+|        | bss
+|        |
+|--------| edata: 0x000215bc
+|        | data
+|        |
+|--------| etext: 0x0001c844
+|        | text        
+|        |
+ --------  begin: 0x00000000
+
+
+Question 2:
+
+the stack pointer was 0x00ffefb0 before calling the printtos function and was 0x00ffefa8 after calling it.
+
+|       |
+ -------  0x00ffefb0
+|       | 
+| return|
+|  addr |
+|-------|0x00ffefa8
+|  ebp  |
+|       |
+--------
+|       |
+| local |
+| vars  |
+|       |
+
+
+
+Question 3
+
+The system has little endian byte order. I found that out through the output of zfunction(). clearing 10th to 18th bits cleared 10th to 18th bit from left side.
+Which showed that the system is little endian.
+
+Question 4
+
+mov: 
+"mov source, destination" moves the data source or the data pointed by source to destination
+
+push:
+places 4 byte operand on the stack
+
+pusha:
+pushes 16 byte operand on the stack
+
+pop:
+pops 4 byte element from the top of the stack
+
+
+popa:
+pops 16 byte element from the top of the stack
+
+
+Question 4:
+printtos function did not show the local variables.
+The reason is that compiler keeps some local variable in registers for efficiency.
